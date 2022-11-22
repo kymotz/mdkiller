@@ -6,7 +6,7 @@ import java.util.*;
  * bigTitle、title、subTitle、context text、context k-v text、
  * code block、link、table(matrix 2*3)、order list、un-order list
  *
- * @author liuqichun03 <liuqichun03@kuaishou.com>
+ * @author liuqichun03
  * Created on 2022/11/8
  */
 public class MdKiller {
