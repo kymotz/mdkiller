@@ -24,7 +24,7 @@ public class SimpleTest {
                         .text("文本4")
                     .endUl()
                 .endRef()
-                .link("链接", "https://team.corp.kuaishou.com")
+                .link("链接", "https://elltor.com")
                 .build();
         System.out.println(md);
     }
@@ -32,9 +32,9 @@ public class SimpleTest {
     @Test
     public void normalTest() {
         LinkedHashMap<String, String> urlMappings = new LinkedHashMap<>();
-        urlMappings.put("TEAM", "https://team.corp.kuaishou.com/");
-        urlMappings.put("TEAM-Gray", "https://bak-team.corp.kuaishou.com/");
-        urlMappings.put("TEAM-ST", "https://team-staging.corp.kuaishou.com/");
+        urlMappings.put("TEAM", "https://elltor.com");
+        urlMappings.put("TEAM-Gray", "https://elltor.com");
+        urlMappings.put("TEAM-ST", "https://elltor.com");
 
         String md = MdKiller.of()
                 .bigTitle("大标题")
