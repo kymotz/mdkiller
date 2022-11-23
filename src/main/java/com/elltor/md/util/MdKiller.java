@@ -294,6 +294,9 @@ public class MdKiller {
 
         private StringBuilder parseRefSection(StringBuilder latestData) {
             char[] chars = latestData.toString().toCharArray();
+            if (chars.length <= 0) {
+                return latestData;
+            }
             StringBuilder data = new StringBuilder(chars.length * 2);
             if (chars[0] != '\n') {
                 data.append("> ");
@@ -311,6 +314,9 @@ public class MdKiller {
 
         private StringBuilder parseOrderListSection(StringBuilder latestData) {
             char[] chars = latestData.toString().toCharArray();
+            if (chars.length <= 0) {
+                return latestData;
+            }
             StringBuilder data = new StringBuilder(chars.length * 2);
             String padding = String.join("", Collections.nCopies(depth * 4, " "));
             int order = 1;
@@ -330,6 +336,9 @@ public class MdKiller {
 
         private StringBuilder parseUnOrderListSection(StringBuilder latestData) {
             char[] chars = latestData.toString().toCharArray();
+            if (chars.length <= 0) {
+                return latestData;
+            }
             StringBuilder data = new StringBuilder(chars.length * 2);
             String padding = String.join("", Collections.nCopies(depth * 4, " "));
             if (chars[0] != '\n') {
@@ -495,9 +504,16 @@ public class MdKiller {
         // ~ public methods
         // -------------------------------------------------------------------------------------------------------------
         public SectionBuilder text(String text) {
-            if (text != null) {
-                curSec.addChild(new Section(Section.Type.NORMAL, new MetaData(Fonts.of(text, (Style) null)), curSec,
-                        null, curSec.getDepth()));
+            return text(text, (String) null);
+        }
+
+        public SectionBuilder text(String name, String value) {
+            if (name != null) {
+                Collection<Fonts> values
+                        = value != null ? Collections.singletonList(Fonts.of(value)) : Collections.emptyList();
+                curSec.addChild(new Section(Section.Type.NORMAL,
+                        new MetaData(MetaData.Type.NORMAL, Fonts.of(name, (Style) null), values),
+                        curSec, null, curSec.getDepth()));
             }
             return this;
         }
