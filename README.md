@@ -4,7 +4,11 @@ MdKiller —— Markdown 杀手 🥷。
 
 MdKiller 是一个格式化生成 Markdown 文本的工具，支持常用 Markdown 格式生成，例如引用块、代码块、有无序列表、表格等，内容上支持字体样式（style）和内容的嵌套，适用于 IM 消息 Markdown 排版。
 
-## 一、使用
+本工具衍生版本：[@maomao124 - MarkdownUtils](https://github.com/maomao124/java_report_java_export_Markdown.git) 
+
+## 一、使用教程
+
+环境：JDK11
 
 1、引入依赖，由于是单文件，直接把文件拷贝到项目即可使用。
 
@@ -43,7 +47,7 @@ public void test(){
 [链接▸](https://elltor.com)
 ```
 
-P.S. 更多演示可以参考单元测试。
+**P.S. 更多演示可以参考单元测试。**
 
 ## 二、特性介绍
 
@@ -315,4 +319,6 @@ public void joinMarkdownShow() {
 
 ## 四、最后
 
-欢迎体验，如果有 Bug 可以直接在 GitHub 提 Issue，使用建议、交流 `elltor(at)163.com`，如果对你有帮助，可以点个免费的 Star。
+欢迎使用，如果有 Bug 可以直接在 GitHub 提 Issue，使用建议、交流 `elltor(at)163.com`
+
+
