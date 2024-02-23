@@ -1,6 +1,7 @@
 package com.elltor.md.util;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * bigTitle、title、subTitle、context text、context k-v text、
@@ -20,6 +21,7 @@ public class MdKiller {
     // ~ public classes & public constants & public enums
     // -----------------------------------------------------------------------------------------------------------------
     public enum Style {
+        // Do not modify the order of the current enumeration elements.
         NORMAL("normal"), BOLD("bold"), ITALIC("italic"),
         RED("red"), GREEN("green"), GRAY("gray"), YELLOW("gold"), BLUE("blue");
 
@@ -68,7 +70,10 @@ public class MdKiller {
                 return text;
             }
             String last = text;
-            for (Style style : styles) {
+            List<Style> styleList = styles.stream()
+                    .sorted(Comparator.comparing(Style::ordinal))
+                    .collect(Collectors.toList());
+            for (Style style : styleList) {
                 last = parseStyle(last, style);
             }
             return last;
@@ -210,7 +215,7 @@ public class MdKiller {
             return linkList.toString();
         }
 
-        private enum Type {
+        public enum Type {
             /** only plain text, plain text list with a name */
             NORMAL,
             /**

@@ -3,6 +3,8 @@ package com.elltor.md;
 import com.elltor.md.util.MdKiller;
 import org.junit.Test;
 
+import java.util.Collections;
+
 /**
  * @author liuqichun03
  * Created on 2022/11/15
@@ -97,6 +99,36 @@ public class TableTest {
                 .build();
         System.out.println();
         System.out.println(md2);
+    }
+
+    /**
+     * 在表格中添加连接
+     */
+    @Test
+    public void linkInTableTest() {
+        // prepare data
+        String name = "Clearlove7", sex = "man", desc = "777", link = "详情", linkVal = "https://zh.wikipedia.org/wiki/%E6%98%8E%E5%87%AF";
+        MdKiller.MetaData[][] data = new MdKiller.MetaData[4][4];
+        MdKiller.MetaData[] title = new MdKiller.MetaData[4];
+        String[] titleStr = {"姓名",  "姓别",  "描述", "链接🔗"};
+        for (int i = 0; i < title.length; i++) {
+            title[i] = new MdKiller.MetaData(MdKiller.MetaData.Type.NORMAL, MdKiller.Fonts.of(titleStr[i], MdKiller.Style.RED), null);
+        }
+        data[0] = title;
+        for (int i = 1; i < data.length; i++) {
+            data[i][0] = new MdKiller.MetaData(MdKiller.MetaData.Type.NORMAL, MdKiller.Fonts.of(name, MdKiller.Style.BLUE), null);
+            data[i][1] = new MdKiller.MetaData(MdKiller.MetaData.Type.NORMAL, MdKiller.Fonts.of(sex, MdKiller.Style.BLUE), null);
+            data[i][2] = new MdKiller.MetaData(MdKiller.MetaData.Type.NORMAL, MdKiller.Fonts.of(desc, MdKiller.Style.BLUE), null);
+            data[i][3] = new MdKiller.MetaData(MdKiller.MetaData.Type.LINK, MdKiller.Fonts.of(link, MdKiller.Style.GREEN, MdKiller.Style.BOLD), Collections.singleton(MdKiller.Fonts.of(linkVal)));
+        }
+
+        // generate markdown table
+        String content = MdKiller.of()
+                .table()
+                .data(data)
+                .endTable()
+                .build();
+        System.out.println(content);
     }
 
     /**
